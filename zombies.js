@@ -73,9 +73,9 @@ class Food extends Weapon{
     this.equipped = false;
 
   }
-  getPack(){
+   getPack(){
     return this._pack;
-  }
+}
 
   getMaxHealth(){
     return this._maxHealth;
@@ -128,7 +128,6 @@ class Food extends Weapon{
  * @property {method} getPack              Returns private variable `pack`.
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
-
 
 /**
  * Player Class Method => checkPack()
@@ -334,6 +333,11 @@ class FastZombie extends Zombie{
  * StrongZombie Extends Zombie Class
  * -----------------------------
  */
+ class StrongZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+}
 
 
 
@@ -357,6 +361,11 @@ class FastZombie extends Zombie{
  * RangedZombie Extends Zombie Class
  * -----------------------------
  */
+class RangedZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+}
 
 
 
@@ -380,7 +389,11 @@ class FastZombie extends Zombie{
  * ExplodingZombie Extends Zombie Class
  * -----------------------------
  */
-
+class ExplodingZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+}
 
 
 
