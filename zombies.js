@@ -300,6 +300,13 @@ class Zombie{
  */
 
 
+class FastZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+}
+
+
 /**
  * FastZombie Extends Zombie Class
  * -----------------------------
