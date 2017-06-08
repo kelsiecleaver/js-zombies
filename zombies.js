@@ -95,10 +95,9 @@ class Food extends Weapon{
       if(this._pack.indexOf(item) === -1){
         console.log("You do not have this item in your pack");
         return false;
-      } else{
+      }else{
         var removed = this._pack.splice(this._pack.indexOf(item), 1);
         console.log(this.name + " now has " + this._pack.length + "items in their pack. " + removed + " was removed from the pack.");
-
           return true;
       }
     }
@@ -107,6 +106,46 @@ class Food extends Weapon{
       console.log(this._pack);
     }
 
+    equip(itemToEquip){
+      if(this.equipped !== false){
+        this._pack[this._pack.indexOf(itemToEquip)] = this.equipped;
+        this.equipped = itemToEquip;
+      }else if(this._pack.indexOf(itemToEquip) === -1 || itemToEquip instanceof Weapon === false){
+        return false;
+      }else{
+        this.equipped = itemToEquip;
+        this.discardItem(itemToEquip);
+      }
+    }
+
+    eat(itemToEat){
+      if(this._pack.indexOf(itemToEat) === -1 || itemToEat instanceof Food === false){
+        return false;
+      }else if(this.getMaxHealth() - this.health <= itemToEat.energy){
+        this.health = this.getMaxHealth();
+      }else{
+        this.health += itemToEat.energy;
+      }
+      this.discardItem(itemToEat);
+    }
+
+    useItem(item){
+      if(item instanceof Weapon === true){
+        this.equip(item);
+      }
+      if(item instanceof Food === true){
+        this.eat(item);
+      }
+    }
+     equippedWith(){
+      if(this.equipped !== false){
+        console.log(this.name + " has equipped: " + this.equipped.name);
+        return this.equipped.name;
+      }else{
+        console.log("Nothing is equipped.");
+        return false;
+      }
+    }
 }
 
 /**
