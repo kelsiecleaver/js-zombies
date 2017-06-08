@@ -39,9 +39,10 @@ class Item {
  * Weapon Extends Item Class
  * -----------------------------
  */
-class Food {
+class Food extends Weapon{
   constructor(name, energy){
-
+    super(name);
+    this.energy = energy;
   }
 }
 
@@ -60,7 +61,19 @@ class Food {
  * @param {number} energy     The energy the food provides.
  * @property {number} energy
  */
+ class Player {
+  constructor(name, health, strength, speed){
+    this._pack = [];
+    this._maxHealth = health;
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
+    this.equipped = false;
 
+  }
+ }
 
 /**
  * Food Extends Item Class
