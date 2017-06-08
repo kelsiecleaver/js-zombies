@@ -8,6 +8,9 @@
  * @property {string} name
  */
 
+function Item(name){
+  this.name = name;
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -24,6 +27,10 @@
  * @param {number} damage   The weapon's damage.
  * @property {number} damage
  */
+ function Weapon(name,damage){
+  this.damage = damage;
+  Item.call(this, name);
+}
 
 
 /**
@@ -31,6 +38,7 @@
  * -----------------------------
  */
 
+Weapon.prototype = Object.create(Item.prototype);
 
 
 /**
@@ -49,11 +57,17 @@
  * @property {number} energy
  */
 
+ function Food(name, energy){
+  Item.call(this, name);
+  this.energy = energy;
+}
+
 
 /**
  * Food Extends Item Class
  * -----------------------------
  */
+ Food.prototype = Object.create(Item.prototype);
 
 
 
@@ -78,7 +92,30 @@
  * @property {method} getPack              Returns private variable `pack`.
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
+function Player(name, health, strength, speed){
+  Item.call(this, name);
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+  this.isAlive = true;
+  this.equipped = false;
 
+  this._maxHealth = health;
+
+  var _pack = [];
+  this.getPack = function(){
+    return _pack;
+  };
+
+}
+
+Player.prototype.getPack = function(){
+  return _pack;
+};
+
+Player.prototype.getMaxHealth = function(){
+  return this._maxHealth;
+};
 
 /**
  * Player Class Method => checkPack()
@@ -91,6 +128,10 @@
  *
  * @name checkPack
  */
+ Player.prototype.checkPack = function(){
+  console.log('you have this in your pack');
+  return _pack;
+};
 
 
 /**
@@ -110,7 +151,17 @@
  * @param {Item/Weapon/Food} item   The item to take.
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
-
+Player.prototype.takeItem = function(item){
+  var myPack = this.getPack();
+  if (myPack.length < 3){
+    myPack.push(item);
+    console.log('could be stored');
+    return true;
+  } else {
+    console.log('could not be stored');
+    return false;
+  }
+};
 
 /**
  * Player Class Method => discardItem(item)
