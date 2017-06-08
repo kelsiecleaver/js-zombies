@@ -74,12 +74,31 @@ class Food extends Weapon{
 
   }
   getPack(){
-    return this._pack
+    return this._pack;
   }
-  gethealth(){
 
+  getMaxHealth(){
+    return this._maxHealth;
   }
- }
+  takeItem(item){
+      if(this._pack.length < 3){
+        this._pack.push(item);
+        console.log(this.name + "has " + this._pack.length + " items in their pack.");
+        return true;
+      } else{
+        console.log("The pack is full");
+        return false;
+      }
+    }
+    discardItem(){
+
+    }
+
+    checkPack(){
+      console.log(this._pack);
+    }
+
+}
 
 /**
  * Food Extends Item Class
