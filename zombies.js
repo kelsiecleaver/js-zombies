@@ -73,6 +73,12 @@ class Food extends Weapon{
     this.equipped = false;
 
   }
+  getPack(){
+    return this._pack
+  }
+  gethealth(){
+
+  }
  }
 
 /**
