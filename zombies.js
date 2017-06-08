@@ -7,7 +7,9 @@
  * @param {string} name     The item's name.
  * @property {string} name
  */
-
+function Item(name){
+  this.name = name;
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -24,14 +26,20 @@
  * @param {number} damage   The weapon's damage.
  * @property {number} damage
  */
-
+function Weapon(name, damage){
+Item.call(this, name);
+this.damage = damage;
+}
 
 /**
  * Weapon Extends Item Class
  * -----------------------------
  */
+class Food {
+  constructor(name){
 
-
+  }
+}
 
 /**
  * Class => Food(name, energy)
