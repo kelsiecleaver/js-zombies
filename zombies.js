@@ -90,8 +90,17 @@ class Food extends Weapon{
         return false;
       }
     }
-    discardItem(){
 
+    discardItem(item){
+      if(this._pack.indexOf(item) === -1){
+        console.log("You do not have this item in your pack");
+        return false;
+      } else{
+        var removed = this._pack.splice(this._pack.indexOf(item), 1);
+        console.log(this.name + " now has " + this._pack.length + "items in their pack. " + removed + " was removed from the pack.");
+
+          return true;
+      }
     }
 
     checkPack(){
